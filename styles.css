@@ -1,0 +1,351 @@
+/* ===========================
+   THRIVAL LIVING — STYLES
+   =========================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --green-dark:   #2d4a3e;
+  --green-mid:    #4a7c6f;
+  --green-soft:   #7aab99;
+  --beige:        #f5f0e8;
+  --beige-dark:   #e8e0d0;
+  --cream:        #fdfaf5;
+  --black:        #1a1a1a;
+  --text-body:    #3a3a3a;
+  --text-muted:   #6b6b6b;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--cream);
+  color: var(--text-body);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background-color: var(--green-dark);
+  text-align: center;
+  padding: 20px 24px;
+}
+
+.site-header .brand {
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(160deg, var(--green-dark) 0%, var(--green-mid) 100%);
+  color: #fff;
+  text-align: center;
+  padding: 72px 24px 80px;
+}
+
+.hero .eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.25;
+  font-weight: 700;
+  margin-bottom: 24px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero .subheadline {
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  opacity: 0.88;
+  max-width: 560px;
+  margin: 0 auto 40px;
+}
+
+.hero .guide-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50px;
+  padding: 10px 24px;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.9);
+}
+
+/* ── SECTION WRAPPER ── */
+.section {
+  padding: 64px 24px;
+}
+
+.section-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ── BENEFITS CARD ── */
+.benefits-section {
+  background-color: var(--beige);
+}
+
+.benefits-section h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--green-dark);
+  margin-bottom: 32px;
+  line-height: 1.3;
+}
+
+.benefit-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.benefit-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  border-left: 4px solid var(--green-soft);
+}
+
+.benefit-list .icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.benefit-list .text strong {
+  display: block;
+  color: var(--green-dark);
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.benefit-list .text span {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ── FORM SECTION ── */
+.form-section {
+  background: var(--cream);
+}
+
+.form-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 48px 40px;
+  box-shadow: 0 4px 32px rgba(45,74,62,0.10);
+  border: 1px solid var(--beige-dark);
+  text-align: center;
+}
+
+.form-card h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--green-dark);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.form-card .form-subtext {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 36px;
+}
+
+.lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.lead-form label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--green-dark);
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.lead-form input {
+  width: 100%;
+  padding: 16px 18px;
+  border: 1.5px solid var(--beige-dark);
+  border-radius: 10px;
+  font-size: 1.05rem;
+  color: var(--black);
+  background: var(--cream);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.lead-form input:focus {
+  border-color: var(--green-mid);
+  box-shadow: 0 0 0 3px rgba(74,124,111,0.12);
+}
+
+.lead-form input::placeholder {
+  color: #b0afa8;
+}
+
+.btn-primary {
+  display: block;
+  width: 100%;
+  background: var(--green-dark);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 18px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  background: var(--green-mid);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.form-privacy {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 16px;
+}
+
+/* ── ABOUT STRIP ── */
+.about-section {
+  background: var(--green-dark);
+  color: #fff;
+  text-align: center;
+  padding: 56px 24px;
+}
+
+.about-section p {
+  max-width: 580px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+.about-section strong {
+  color: var(--green-soft);
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  background: var(--black);
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+  padding: 28px 24px;
+  font-size: 0.82rem;
+}
+
+/* ── THANK YOU PAGE ── */
+.thankyou-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--green-dark) 0%, var(--green-mid) 100%);
+  padding: 40px 24px;
+}
+
+.thankyou-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 56px 48px;
+  max-width: 540px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.15);
+}
+
+.thankyou-card .ty-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.thankyou-card h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--green-dark);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.thankyou-card p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+  line-height: 1.7;
+}
+
+.thankyou-card .redirect-note {
+  font-size: 0.9rem;
+  color: var(--green-mid);
+  margin-bottom: 32px;
+  font-style: italic;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: var(--green-dark);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 16px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+  background: var(--green-mid);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .form-card {
+    padding: 36px 24px;
+  }
+  .thankyou-card {
+    padding: 40px 28px;
+  }
+}
