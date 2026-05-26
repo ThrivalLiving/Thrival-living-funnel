@@ -11,11 +11,23 @@
 
   <!-- HEADER -->
   <header class="site-header">
+    <svg class="logo-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="48" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/>
+      <circle cx="50" cy="32" r="18" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <circle cx="50" cy="68" r="18" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <circle cx="34" cy="41" r="18" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <circle cx="66" cy="41" r="18" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <circle cx="34" cy="59" r="18" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <circle cx="66" cy="59" r="18" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+      <circle cx="50" cy="50" r="18" stroke="rgba(255,255,255,0.6)" stroke-width="0.8"/>
+      <circle cx="50" cy="32" r="3" fill="rgba(255,255,255,0.9)"/>
+      <circle cx="50" cy="68" r="3" fill="rgba(122,171,153,0.8)"/>
+    </svg>
     <p class="brand">Thrival Living</p>
   </header>
 
   <!-- NAV -->
-<nav class="site-nav">
+  <nav class="site-nav">
     <a href="/" class="active">Free Guide</a>
     <a href="/community">Community Sessions</a>
     <a href="/corporate">Corporate</a>
@@ -38,41 +50,18 @@
       <div class="form-card">
         <h2>Get Your Free Guide Now</h2>
         <p class="form-subtext">Enter your details below and we'll send it straight to you.</p>
-
-        <form
-          class="lead-form"
-          name="lead-capture"
-          method="POST"
-          action="/thank-you.html"
-          data-netlify="true"
-        >
+        <form class="lead-form" name="lead-capture" method="POST" action="/thank-you.html" data-netlify="true">
           <input type="hidden" name="form-name" value="lead-capture" />
-
           <div>
             <label for="firstname">First Name</label>
-            <input
-              type="text"
-              id="firstname"
-              name="firstname"
-              placeholder="Your first name"
-              required
-            />
+            <input type="text" id="firstname" name="firstname" placeholder="Your first name" required />
           </div>
-
           <div>
             <label for="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="your@email.com"
-              required
-            />
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
           </div>
-
           <button type="submit" class="btn-primary">Send Me The Guide 🌿</button>
         </form>
-
         <p class="form-privacy">🔒 No spam, ever. Unsubscribe anytime.</p>
       </div>
     </div>
