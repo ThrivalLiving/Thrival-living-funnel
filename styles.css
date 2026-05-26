@@ -896,3 +896,14 @@ body {
   display: flex;
   flex-direction: column;
   gap:
+@media (max-width: 600px) {
+  .site-nav {
+    gap: 16px;
+    padding: 0 16px 14px;
+    justify-content: flex-start;
+  }
+  .site-nav a {
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+  }
+}
