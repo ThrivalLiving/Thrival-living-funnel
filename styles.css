@@ -277,6 +277,7 @@ body {
   text-align: center;
   overflow: visible;
   height: auto;
+  max-height: none;
 }
 
 .form-card h2 {
