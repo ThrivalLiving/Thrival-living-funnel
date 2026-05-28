@@ -275,6 +275,8 @@ body {
   box-shadow: 0 4px 32px rgba(45,74,62,0.10);
   border: 1px solid var(--beige-dark);
   text-align: center;
+  overflow: visible;
+  height: auto;
 }
 
 .form-card h2 {
