@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Your Body Feels Different After 60 — Thrival Living</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream:      #FAF6EF;
+    --cream-dark: #F0E8D8;
+    --ochre:      #C8893A;
+    --ochre-deep: #9A6228;
+    --ochre-pale: #F5E9D8;
+    --teal:       #2E6B65;
+    --teal-light: #4A9E96;
+    --body:       #2E2416;
+    --subtext:    #8A7660;
+    --rule:       #DDD0B8;
+  }
+
+  html { font-size: 18px; }
+
+  body {
+    background: var(--cream);
+    color: var(--body);
+    font-family: 'Source Sans 3', Georgia, sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Layout ── */
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── Masthead ── */
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 0 20px;
+    border-bottom: 1px solid var(--ochre);
+    margin-bottom: 56px;
+  }
+  .masthead-brand {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--subtext);
+  }
+  .masthead-guide {
+    font-family: 'Source Sans 3', sans-serif;
+    font-style: italic;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    color: var(--subtext);
+  }
+
+  /* ── Section blocks ── */
+  .section {
+    margin-bottom: 64px;
+  }
+
+  /* ── Title block ── */
+  .title-block {
+    margin-bottom: 56px;
+  }
+  .title-block h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-size: 2.6rem;
+    line-height: 1.2;
+    color: var(--teal);
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+  .title-block .deck {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    font-size: 1.05rem;
+    color: var(--ochre);
+    letter-spacing: 0.04em;
+    margin-bottom: 28px;
+  }
+  .title-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--ochre);
+    margin-bottom: 0;
+  }
+
+  /* ── Section heading ── */
+  .section-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-size: 1.7rem;
+    line-height: 1.25;
+    color: var(--teal);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── Body copy ── */
+  p {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 1.85;
+    font-weight: 300;
+  }
+  p em {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* ── Pull quote ── */
+  .pull-quote {
+    margin: 48px 0;
+    padding: 0 0 0 0;
+    text-align: center;
+  }
+  .pull-quote::before,
+  .pull-quote::after {
+    content: '';
+    display: block;
+    width: 40%;
+    height: 1px;
+    background: var(--rule);
+    margin: 0 auto;
+  }
+  .pull-quote::before { margin-bottom: 28px; }
+  .pull-quote::after  { margin-top: 28px; }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.75;
+    color: var(--teal);
+    margin-bottom: 12px;
+    letter-spacing: 0.01em;
+  }
+  .pull-quote p.pull-secondary {
+    font-size: 1.05rem;
+    color: var(--ochre-deep);
+    margin-bottom: 0;
+  }
+
+  /* ── Divider ── */
+  .soft-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 48px 0;
+  }
+  .short-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--ochre);
+    border: none;
+    margin: 20px 0 28px;
+  }
+
+  /* ── Tips ── */
+  .tip {
+    margin-bottom: 40px;
+  }
+  .tip-number {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-size: 3rem;
+    color: var(--ochre);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .tip-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--rule);
+    border: none;
+    margin-bottom: 14px;
+  }
+  .tip-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-size: 1.15rem;
+    color: var(--teal);
+    margin-bottom: 10px;
+    letter-spacing: 0.01em;
+  }
+  .tip p {
+    margin-bottom: 0;
+  }
+
+  /* ── CTA block ── */
+  .cta-block {
+    background: var(--ochre-pale);
+    border-left: 3px solid var(--ochre);
+    padding: 32px 28px;
+    margin: 48px 0 0;
+  }
+  .cta-block h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: var(--teal);
+    margin-bottom: 14px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .cta-block p {
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+  }
+  .cta-url {
+    display: inline-block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--ochre-deep);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid var(--ochre);
+    padding-bottom: 2px;
+  }
+  .cta-url:hover { color: var(--teal); border-color: var(--teal); }
+
+  /* ── Footer / logo ── */
+  .doc-footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .doc-footer .footer-url {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--subtext);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .doc-footer img {
+    width: 52px;
+    opacity: 0.85;
+  }
+
+  /* ── Continued indicator ── */
+  .continued {
+    text-align: right;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--subtext);
+    margin-top: 8px;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    html { font-size: 17px; }
+    .title-block h1 { font-size: 2rem; }
+    .section-heading { font-size: 1.45rem; }
+    .pull-quote p { font-size: 1.05rem; }
+    .masthead { margin-bottom: 40px; }
+    .cta-block { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <span class="masthead-brand">Thrival Living</span>
+    <span class="masthead-guide">A Movement Guide</span>
+  </header>
+
+  <!-- Title -->
+  <div class="title-block">
+    <h1>Why Your Body Feels Different After&nbsp;60</h1>
+    <p class="deck">And What To Do About It</p>
+    <div class="title-rule"></div>
+  </div>
+
+  <!-- Section 1: Opening -->
+  <div class="section">
+    <p>The reason your body doesn't feel like yours anymore isn't what you think.</p>
+    <p>It's not your age. It's not damage. It's not something that's been done to you.</p>
+    <p>It's disconnection. And that means there's something you can actually do about it.</p>
+    <p>Here's what happens. As we get older, we naturally start to move less. We slow down, conserve energy, protect ourselves from anything that feels risky. It makes sense. It feels responsible.</p>
+    <p>But the body doesn't work that way.</p>
+    <p>The less you ask of it, the less it gives back. And slowly — so slowly you barely notice — the parts of the body lose touch with each other. Movement gets heavier. Balance gets uncertain. Confidence quietly disappears.</p>
+
+    <div class="pull-quote">
+      <p>That's not ageing. That's a conversation that stopped.</p>
+      <p class="pull-secondary">And conversations can be started again.</p>
+    </div>
+  </div>
+
+  <!-- Section 2: What's possible -->
+  <div class="section">
+    <h2 class="section-heading">So what does it look like when the connection comes back?</h2>
+    <hr class="short-rule">
+
+    <p>You wake up and the stiffness that used to greet you before your feet hit the floor — it's gone.</p>
+    <p>You're walking down the steps of a monument in Rome and you're not gripping the handrail. You're looking up. You're taking it in.</p>
+    <p>You're keeping up on the coastal walk. You're getting on the floor with the grandkids and — more importantly — getting back up again. You're moving through your life without that quiet background voice asking "can I actually do this?"</p>
+    <p>Not because your body worked harder. Because your body worked together.</p>
+    <p>I've seen this happen more times than I can count — people in their sixties and seventies who thought that life was getting smaller. It wasn't. And yours doesn't have to either.</p>
+    <p>This isn't about getting fit. It's about coming home to your own body again.</p>
+    <p>And once that happens — the life you've worked hard to get to starts to feel like yours again.</p>
+
+    <div class="pull-quote">
+      <p>This isn't about getting fit.</p>
+      <p class="pull-secondary">It's about coming home to your own body again.</p>
+    </div>
+  </div>
+
+  <!-- Section 3: Three tips -->
+  <div class="section">
+    <h2 class="section-heading">Three things to start with.</h2>
+    <hr class="short-rule">
+
+    <p>These aren't exercises. They're the start of a conversation your body has been waiting to have.</p>
+    <p><em>Do them slowly. That's where everything begins.</em></p>
+
+    <div class="tip">
+      <div class="tip-number">1</div>
+      <hr class="tip-rule">
+      <h3 class="tip-title">Wake up before you get up</h3>
+      <p>Tomorrow morning, before your feet hit the floor, take sixty seconds to just notice. Not to fix anything. Not to stretch. Just to listen. Bring your attention slowly through your body — what feels tight, what feels easy, what feels different. It takes sixty seconds. And it starts to rebuild something that takes decades to lose.</p>
+    </div>
+
+    <div class="tip">
+      <div class="tip-number">2</div>
+      <hr class="tip-rule">
+      <h3 class="tip-title">Slow everything down by half</h3>
+      <p>Sitting to standing. Stepping off a kerb. Reaching for something overhead. Whatever you're about to do — do it at half the speed. Not because you need to be careful. Because you need to be present. One comes from fear. The other comes from connection. And connection is exactly what we're rebuilding.</p>
+    </div>
+
+    <div class="tip">
+      <div class="tip-number">3</div>
+      <hr class="tip-rule">
+      <h3 class="tip-title">Just stand</h3>
+      <p>Once a day, stand quietly for one minute. Barefoot if you can — outside if possible. Feel the ground. Feel your weight. Notice your body making tiny adjustments to keep you upright without you telling it to. Don't interfere. Just notice. The old martial arts traditions built entire practices around this one act — and there's a reason.</p>
+    </div>
+  </div>
+
+  <!-- Section 4: What comes next -->
+  <div class="section">
+    <h2 class="section-heading">What comes next.</h2>
+    <hr class="short-rule">
+
+    <p>These three things won't change everything overnight.</p>
+    <p>But if you do them with genuine attention — really do them, not just read about them — you'll start to feel something shift. A quiet confidence. A sense that your body is actually on your side again.</p>
+    <p>That's where it starts. But it's not where it ends.</p>
+    <p>Connection is the foundation. Movement is how we build on it.</p>
+    <p>When the body starts moving as one connected unit — not harder, not faster, just together — the strength comes back. The stability comes back. The confidence that you can do the things you want to do — that comes back too.</p>
+    <p>These movements are simple. They're gentle. And they will have you feeling more alive, more connected, and more like yourself than you have in years.</p>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <h3>The Thrival Living Circle</h3>
+      <p>A gentle daily practice — movement, connection, and a place that's yours to return to.</p>
+      <p>When you're ready to take the next step —</p>
+      <a href="https://thrivalliving.com.au/circle" class="cta-url">→ thrivalliving.com.au/circle</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="doc-footer">
+    <a href="https://thrivalliving.com.au" class="footer-url">thrivalliving.com.au</a>
+    <img src="https://thrivalliving.com.au/thrival-sacred-balance-color.png" alt="Thrival Living" onerror="this.style.display='none'">
+  </footer>
+
+</div>
+</body>
+</html>

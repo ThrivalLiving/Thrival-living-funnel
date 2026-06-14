@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Does Your Body Feel So Different After 60? — Thrival Living</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream:      #FAF6EF;
+    --cream-dark: #F0E8D8;
+    --ochre:      #C8893A;
+    --ochre-deep: #9A6228;
+    --ochre-pale: #F5E9D8;
+    --teal:       #2E6B65;
+    --teal-light: #4A9E96;
+    --body:       #2E2416;
+    --subtext:    #8A7660;
+    --rule:       #DDD0B8;
+  }
+
+  html { font-size: 18px; }
+
+  body {
+    background: var(--cream);
+    color: var(--body);
+    font-family: 'Source Sans 3', Georgia, sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Layout ── */
+  .page {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── Masthead ── */
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 0 20px;
+    border-bottom: 1px solid var(--ochre);
+    margin-bottom: 60px;
+  }
+  .masthead-brand {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--subtext);
+    text-decoration: none;
+  }
+  .masthead-guide {
+    font-family: 'Source Sans 3', sans-serif;
+    font-style: italic;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    color: var(--subtext);
+  }
+
+  /* ── Hero ── */
+  .hero {
+    margin-bottom: 52px;
+  }
+  .hero-eyebrow {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    color: var(--teal);
+    letter-spacing: -0.01em;
+    margin-bottom: 20px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ochre-deep);
+  }
+  .hero-sub {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--ochre-deep);
+    margin-bottom: 28px;
+    letter-spacing: 0.01em;
+  }
+  .hero-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--ochre);
+    margin-bottom: 32px;
+  }
+  .hero-body p {
+    font-size: 1rem;
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 16px;
+    color: var(--body);
+  }
+
+  /* ── What you get ── */
+  .guide-preview {
+    background: var(--ochre-pale);
+    border-left: 3px solid var(--ochre);
+    padding: 28px 24px;
+    margin: 44px 0;
+  }
+  .guide-preview-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 10px;
+  }
+  .guide-preview h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    color: var(--teal);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .guide-preview p {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--subtext);
+    font-weight: 300;
+    margin: 0;
+  }
+
+  /* ── Form ── */
+  .form-section {
+    margin-top: 48px;
+  }
+  .form-label {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--teal);
+    margin-bottom: 24px;
+    display: block;
+  }
+  .form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .form-fields input {
+    width: 100%;
+    padding: 16px 18px;
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--body);
+    letter-spacing: 0.02em;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .form-fields input:focus {
+    border-color: var(--teal);
+  }
+  .form-fields input::placeholder {
+    color: var(--subtext);
+    opacity: 0.7;
+  }
+  .submit-btn {
+    width: 100%;
+    padding: 18px 24px;
+    background: var(--teal);
+    color: white;
+    border: none;
+    border-radius: 2px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 6px;
+  }
+  .submit-btn:hover { background: var(--ochre-deep); }
+  .submit-btn:active { background: var(--ochre); }
+
+  .form-reassurance {
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--subtext);
+    margin-top: 14px;
+    letter-spacing: 0.04em;
+    font-style: italic;
+  }
+
+  /* ── Signature line ── */
+  .signature {
+    margin-top: 64px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  .signature-text p {
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: var(--subtext);
+    font-weight: 300;
+    margin: 0;
+  }
+  .signature-text strong {
+    font-weight: 600;
+    color: var(--body);
+    font-size: 0.88rem;
+  }
+
+  /* Success state */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .success-msg h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+  .success-msg p {
+    font-size: 0.95rem;
+    color: var(--subtext);
+    line-height: 1.8;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    html { font-size: 17px; }
+    .hero h1 { font-size: 2rem; }
+    .masthead { margin-bottom: 44px; }
+    .guide-preview { padding: 22px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <a href="https://thrivalliving.com.au" class="masthead-brand">Thrival Living</a>
+    <span class="masthead-guide">For women 60+</span>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <p class="hero-eyebrow">Free Guide</p>
+    <h1>Why does your body feel so different after&nbsp;60?<br><em>The answer might change everything.</em></h1>
+    <div class="hero-rule"></div>
+    <div class="hero-body">
+      <p>If you've noticed your body feeling stiffer, less steady, or just different than it used to — you're not imagining it. And it's not simply age.</p>
+      <p>There's a reason it's happening. And once you understand what that reason actually is, something shifts.</p>
+      <p>This free guide explains what's really going on — and gives you three simple things you can start today.</p>
+    </div>
+  </div>
+
+  <!-- Guide preview -->
+  <div class="guide-preview">
+    <p class="guide-preview-label">What you'll receive</p>
+    <h2>Why Your Body Feels Different After 60 — And What To Do About It</h2>
+    <p>A warm, practical guide from Thrival Living. A clear, honest explanation of what's really happening in your body — and how to begin feeling like yourself again.</p>
+  </div>
+
+  <!-- Form -->
+  <div class="form-section">
+    <label class="form-label">Where should I send it?</label>
+    <form
+      name="margaret-lead-magnet"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      id="lead-form"
+    >
+      <input type="hidden" name="form-name" value="margaret-lead-magnet">
+      <p style="display:none"><input name="bot-field"></p>
+      <div class="form-fields">
+        <input
+          type="text"
+          name="first-name"
+          placeholder="Your first name"
+          required
+          autocomplete="given-name"
+        >
+        <input
+          type="email"
+          name="email"
+          placeholder="Your email address"
+          required
+          autocomplete="email"
+        >
+        <button type="submit" class="submit-btn">Send me the guide →</button>
+      </div>
+    </form>
+    <p class="form-reassurance">No spam. Unsubscribe any time.</p>
+  </div>
+
+  <!-- Success message (shown after submit) -->
+  <div class="success-msg" id="success-msg">
+    <h3>It's on its way.</h3>
+    <p>Check your inbox in the next few minutes.<br>If you don't see it, check your junk folder — it happens.</p>
+  </div>
+
+  <!-- Signature -->
+  <div class="signature">
+    <div class="signature-text">
+      <p><strong>Brennan</strong></p>
+      <p>Founder, Thrival Living<br>
+      <em>Move Better. Feel Stronger. Thrive Longer.</em><br>
+      <a href="https://thrivalliving.com.au" style="color: var(--ochre); text-decoration: none;">thrivalliving.com.au</a></p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Simple form success handling
+  const form = document.getElementById('lead-form');
+  const successMsg = document.getElementById('success-msg');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      });
+      form.style.display = 'none';
+      document.querySelector('.form-label').style.display = 'none';
+      successMsg.style.display = 'block';
+    } catch(err) {
+      form.submit(); // fallback
+    }
+  });
+</script>
+
+</body>
+</html>
