@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is Your Body Asking For? — Thrival Living</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream:      #FAF6EF;
+    --ochre:      #C8893A;
+    --ochre-deep: #9A6228;
+    --ochre-pale: #F5E9D8;
+    --teal:       #2E6B65;
+    --teal-light: #4A9E96;
+    --teal-pale:  #EAF2F1;
+    --body:       #2E2416;
+    --subtext:    #8A7660;
+    --rule:       #DDD0B8;
+  }
+  html { font-size: 17px; }
+  body {
+    background: var(--cream);
+    color: var(--body);
+    font-family: 'Source Sans 3', Georgia, sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--ochre);
+    background: var(--cream);
+  }
+  .logo-mark { width: 36px; height: 36px; }
+  .brand { font-size: 0.75rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); }
+  .tagline-header { margin-left: auto; font-style: italic; font-size: 0.65rem; color: var(--subtext); }
+
+  /* ── Nav ── */
+  .site-nav { display: flex; background: var(--teal); padding: 0 24px; overflow-x: auto; }
+  .site-nav a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.06em; padding: 14px 16px; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.2s; }
+  .site-nav a:hover { color: white; }
+  .site-nav a.active { color: white; border-bottom-color: var(--ochre); }
+
+  /* ── Page ── */
+  .page { max-width: 640px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ── Intro ── */
+  .intro { padding: 52px 0 40px; }
+  .eyebrow { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ochre); margin-bottom: 16px; }
+  .intro h1 { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 2.2rem; line-height: 1.2; color: var(--teal); letter-spacing: -0.01em; margin-bottom: 16px; }
+  .intro p { font-size: 1rem; color: var(--subtext); line-height: 1.8; margin-bottom: 12px; font-weight: 300; }
+  .intro-rule { width: 48px; height: 2px; background: var(--ochre); margin: 24px 0; }
+
+  /* ── Progress ── */
+  .progress-wrap { margin-bottom: 36px; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--subtext); letter-spacing: 0.06em; margin-bottom: 8px; }
+  .progress-bar { height: 3px; background: var(--rule); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--ochre); border-radius: 2px; transition: width 0.4s ease; }
+
+  /* ── Question ── */
+  .question-block { display: none; animation: fadeIn 0.3s ease; }
+  .question-block.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .question-num { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ochre); margin-bottom: 10px; }
+  .question-text { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 1.4rem; line-height: 1.35; color: var(--teal); margin-bottom: 28px; letter-spacing: -0.01em; }
+
+  /* ── Options ── */
+  .options { display: flex; flex-direction: column; gap: 12px; }
+  .option { display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; background: white; border: 1.5px solid var(--rule); cursor: pointer; transition: all 0.2s; text-align: left; width: 100%; font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; font-weight: 300; color: var(--body); line-height: 1.6; }
+  .option:hover { border-color: var(--teal); background: var(--teal-pale); }
+  .option.selected { border-color: var(--teal); background: var(--teal-pale); }
+  .option.thriving:hover, .option.thriving.selected { border-color: var(--ochre); background: var(--ochre-pale); }
+  .option-letter { width: 24px; height: 24px; border-radius: 50%; background: var(--cream); border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 600; color: var(--subtext); flex-shrink: 0; margin-top: 1px; transition: all 0.2s; }
+  .option.selected .option-letter { background: var(--teal); border-color: var(--teal); color: white; }
+  .option.thriving.selected .option-letter { background: var(--ochre); border-color: var(--ochre); color: white; }
+
+  /* ── Email gate ── */
+  .email-gate { display: none; animation: fadeIn 0.3s ease; }
+  .email-gate.active { display: block; }
+  .email-gate h2 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 1.7rem; color: var(--teal); margin-bottom: 10px; line-height: 1.25; }
+  .email-gate p { font-size: 0.95rem; color: var(--subtext); margin-bottom: 24px; font-weight: 300; line-height: 1.75; }
+  .email-form { display: flex; flex-direction: column; gap: 12px; }
+  .email-form input { width: 100%; padding: 15px 18px; background: white; border: 1.5px solid var(--rule); font-family: 'Source Sans 3', sans-serif; font-size: 1rem; font-weight: 300; color: var(--body); outline: none; -webkit-appearance: none; transition: border-color 0.2s; }
+  .email-form input:focus { border-color: var(--teal); }
+  .email-form input::placeholder { color: var(--subtext); opacity: 0.7; }
+  .btn-reveal { width: 100%; padding: 17px 24px; background: var(--teal); color: white; border: none; font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: 1rem; letter-spacing: 0.06em; cursor: pointer; transition: background 0.2s; }
+  .btn-reveal:hover { background: var(--ochre-deep); }
+
+  /* ── Result ── */
+  .result-block { display: none; animation: fadeIn 0.4s ease; }
+  .result-block.active { display: block; }
+  .result-eyebrow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ochre); margin-bottom: 12px; }
+  .result-name { font-size: 0.78rem; font-weight: 400; color: var(--subtext); margin-bottom: 6px; font-style: italic; }
+  .result-title { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 2rem; color: var(--teal); margin-bottom: 6px; line-height: 1.2; letter-spacing: -0.01em; }
+  .result-subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; color: var(--ochre-deep); margin-bottom: 28px; }
+  .result-rule { width: 48px; height: 2px; background: var(--ochre); margin-bottom: 24px; }
+
+  /* ── Score bars ── */
+  .score-breakdown { margin: 28px 0 32px; }
+  .score-breakdown-title { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--subtext); margin-bottom: 16px; }
+  .score-row { margin-bottom: 14px; }
+  .score-row-label { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+  .score-label-name { font-size: 0.88rem; font-weight: 600; color: var(--body); }
+  .score-label-pct { font-size: 0.78rem; color: var(--subtext); }
+  .score-bar-bg { height: 6px; background: var(--rule); border-radius: 3px; overflow: hidden; }
+  .score-bar-fill { height: 100%; border-radius: 3px; transition: width 0.8s ease; }
+  .score-bar-fill.top { background: var(--teal); }
+  .score-bar-fill.second { background: var(--ochre); }
+  .score-bar-fill.rest { background: var(--rule); }
+  .score-tag { font-size: 0.68rem; color: var(--subtext); font-style: italic; margin-top: 2px; }
+  .score-tag.highlight { color: var(--teal); font-weight: 400; }
+
+  /* ── Result body ── */
+  .result-body p { font-size: 1rem; line-height: 1.85; color: var(--body); font-weight: 300; margin-bottom: 16px; }
+  .result-body p em { font-style: italic; color: var(--teal); }
+  .result-body .pull { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--teal); line-height: 1.75; margin: 20px 0; padding-left: 16px; border-left: 2px solid var(--ochre); }
+
+  /* ── CTA ── */
+  .result-cta { background: var(--ochre-pale); border-left: 3px solid var(--ochre); padding: 28px 24px; margin: 36px 0; }
+  .result-cta h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 1.2rem; color: var(--teal); margin-bottom: 10px; }
+  .result-cta p { font-size: 0.92rem; color: var(--body); margin-bottom: 16px; font-weight: 300; line-height: 1.75; }
+  .btn-cta { display: inline-block; padding: 15px 32px; background: var(--teal); color: white; text-decoration: none; font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.06em; transition: background 0.2s; border: none; cursor: pointer; }
+  .btn-cta:hover { background: var(--ochre-deep); }
+  .retake-link { display: block; text-align: center; margin-top: 20px; font-size: 0.82rem; color: var(--subtext); cursor: pointer; font-style: italic; text-decoration: underline; }
+
+  /* ── Footer ── */
+  .site-footer { text-align: center; padding: 24px; font-size: 0.72rem; color: var(--subtext); border-top: 1px solid var(--rule); margin-top: 40px; letter-spacing: 0.04em; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <svg class="logo-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="48" stroke="rgba(46,107,101,0.4)" stroke-width="0.8"/>
+    <circle cx="50" cy="32" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+    <circle cx="50" cy="68" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+    <circle cx="34" cy="41" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+    <circle cx="66" cy="41" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+    <circle cx="34" cy="59" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+    <circle cx="66" cy="59" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+    <circle cx="50" cy="50" r="18" stroke="rgba(46,107,101,0.6)" stroke-width="0.8"/>
+    <circle cx="50" cy="32" r="3" fill="rgba(200,137,58,0.9)"/>
+    <circle cx="50" cy="68" r="3" fill="rgba(46,107,101,0.8)"/>
+  </svg>
+  <p class="brand">Thrival Living</p>
+  <span class="tagline-header">Move Better. Feel Stronger. Thrive Longer.</span>
+</header>
+
+<nav class="site-nav">
+  <a href="/">Home</a>
+  <a href="/community">Community Sessions</a>
+  <a href="/after-60">Free Guide</a>
+  <a href="/circle">The Circle</a>
+</nav>
+
+<div class="page">
+
+  <!-- INTRO -->
+  <div class="intro" id="intro-section">
+    <p class="eyebrow">Thrival Living · 2 minute quiz</p>
+    <h1>What is your body really asking for?</h1>
+    <p>Answer six honest questions and discover what your body needs most right now — and what to do about it.</p>
+    <p>There are no right or wrong answers. Just pick the one that feels most true.</p>
+    <div class="intro-rule"></div>
+    <button class="btn-cta" onclick="startQuiz()">Begin the Quiz →</button>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz-section" style="display:none;">
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span id="progress-text">Question 1 of 6</span>
+        <span id="progress-pct">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+
+    <!-- Q1 -->
+    <div class="question-block active" id="q1">
+      <p class="question-num">Question 1 of 6</p>
+      <p class="question-text">How does your body feel first thing in the morning?</p>
+      <div class="options">
+        <button class="option" onclick="selectOption(this,'grounding')"><span class="option-letter">A</span><span>Unsteady — it takes a while to feel like I have my feet under me</span></button>
+        <button class="option" onclick="selectOption(this,'stillness')"><span class="option-letter">B</span><span>Heavy and slow — like it takes forever to wake up</span></button>
+        <button class="option" onclick="selectOption(this,'opening')"><span class="option-letter">C</span><span>Tight and contracted — like everything needs to be unlocked</span></button>
+        <button class="option" onclick="selectOption(this,'strength')"><span class="option-letter">D</span><span>Okay, but I don't quite trust it like I used to</span></button>
+        <button class="option thriving" onclick="selectOption(this,'thriving')"><span class="option-letter">E</span><span>Honestly pretty good — I feel settled and ready for the day</span></button>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-block" id="q2">
+      <p class="question-num">Question 2 of 6</p>
+      <p class="question-text">When you think about moving your body, what comes up?</p>
+      <div class="options">
+        <button class="option" onclick="selectOption(this,'grounding')"><span class="option-letter">A</span><span>A vague anxiety — I feel disconnected from it</span></button>
+        <button class="option" onclick="selectOption(this,'stillness')"><span class="option-letter">B</span><span>Exhaustion — I push through but it takes real effort</span></button>
+        <button class="option" onclick="selectOption(this,'opening')"><span class="option-letter">C</span><span>Frustration — I used to move so freely</span></button>
+        <button class="option" onclick="selectOption(this,'strength')"><span class="option-letter">D</span><span>Hesitation — I'm not sure what my body can handle</span></button>
+        <button class="option thriving" onclick="selectOption(this,'thriving')"><span class="option-letter">E</span><span>I actually look forward to it — movement feels natural and easy</span></button>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-block" id="q3">
+      <p class="question-num">Question 3 of 6</p>
+      <p class="question-text">What do you miss most about how your body used to feel?</p>
+      <div class="options">
+        <button class="option" onclick="selectOption(this,'grounding')"><span class="option-letter">A</span><span>Feeling present and settled in myself</span></button>
+        <button class="option" onclick="selectOption(this,'stillness')"><span class="option-letter">B</span><span>Being able to rest and recover easily</span></button>
+        <button class="option" onclick="selectOption(this,'opening')"><span class="option-letter">C</span><span>Moving freely without thinking about it</span></button>
+        <button class="option" onclick="selectOption(this,'strength')"><span class="option-letter">D</span><span>Feeling capable and strong</span></button>
+        <button class="option thriving" onclick="selectOption(this,'thriving')"><span class="option-letter">E</span><span>Nothing really — I feel pretty much like myself</span></button>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question-block" id="q4">
+      <p class="question-num">Question 4 of 6</p>
+      <p class="question-text">When you're stressed or overwhelmed, where do you feel it?</p>
+      <div class="options">
+        <button class="option" onclick="selectOption(this,'grounding')"><span class="option-letter">A</span><span>I feel scattered and ungrounded — like I can't find my centre</span></button>
+        <button class="option" onclick="selectOption(this,'stillness')"><span class="option-letter">B</span><span>I feel it everywhere — my body just wants to shut down</span></button>
+        <button class="option" onclick="selectOption(this,'opening')"><span class="option-letter">C</span><span>I tighten up — shoulders, chest, everything contracts</span></button>
+        <button class="option" onclick="selectOption(this,'strength')"><span class="option-letter">D</span><span>I push harder — and then pay for it later</span></button>
+        <button class="option thriving" onclick="selectOption(this,'thriving')"><span class="option-letter">E</span><span>I move through it — my body feels like a resource not a problem</span></button>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question-block" id="q5">
+      <p class="question-num">Question 5 of 6</p>
+      <p class="question-text">What would feel like the biggest win for your body right now?</p>
+      <div class="options">
+        <button class="option" onclick="selectOption(this,'grounding')"><span class="option-letter">A</span><span>Feeling present and at home in myself again</span></button>
+        <button class="option" onclick="selectOption(this,'stillness')"><span class="option-letter">B</span><span>Learning to slow down and actually listen to my body</span></button>
+        <button class="option" onclick="selectOption(this,'opening')"><span class="option-letter">C</span><span>Moving more freely — less stiffness, more ease</span></button>
+        <button class="option" onclick="selectOption(this,'strength')"><span class="option-letter">D</span><span>Feeling genuinely strong and capable again</span></button>
+        <button class="option thriving" onclick="selectOption(this,'thriving')"><span class="option-letter">E</span><span>I'm already there — I just want to keep it that way</span></button>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question-block" id="q6">
+      <p class="question-num">Question 6 of 6</p>
+      <p class="question-text">When you imagine feeling good in your body, what does that look like?</p>
+      <div class="options">
+        <button class="option" onclick="selectOption(this,'grounding')"><span class="option-letter">A</span><span>Standing barefoot outside, feeling solid and completely calm</span></button>
+        <button class="option" onclick="selectOption(this,'stillness')"><span class="option-letter">B</span><span>Moving slowly and quietly, completely in tune with myself</span></button>
+        <button class="option" onclick="selectOption(this,'opening')"><span class="option-letter">C</span><span>Reaching, stretching, moving without any restriction</span></button>
+        <button class="option" onclick="selectOption(this,'strength')"><span class="option-letter">D</span><span>Doing the things I love without second-guessing myself</span></button>
+        <button class="option thriving" onclick="selectOption(this,'thriving')"><span class="option-letter">E</span><span>That's pretty much how I feel now — I just want to maintain it</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMAIL GATE -->
+  <div class="email-gate" id="email-gate">
+    <p class="eyebrow">Almost there</p>
+    <h2>Your result is ready.</h2>
+    <p>Enter your name and email and we'll show you exactly what your body is asking for — and what to do about it.</p>
+    <form class="email-form" id="email-form" onsubmit="showResult(event)">
+      <input type="text" id="first-name" placeholder="Your first name" required autocomplete="given-name">
+      <input type="email" id="email-input" placeholder="Your email address" required autocomplete="email">
+      <button type="submit" class="btn-reveal">Show Me My Result →</button>
+    </form>
+    <p style="font-size:0.72rem; color:var(--subtext); font-style:italic; text-align:center; margin-top:12px;">No spam. Unsubscribe any time.</p>
+  </div>
+
+  <!-- RESULT -->
+  <div class="result-block" id="result-block">
+
+    <p class="result-eyebrow">Your body breakdown</p>
+    <p class="result-name" id="result-greeting"></p>
+    <p class="result-title" id="result-title"></p>
+    <p class="result-subtitle" id="result-subtitle"></p>
+    <div class="result-rule"></div>
+
+    <!-- Score bars -->
+    <div class="score-breakdown">
+      <p class="score-breakdown-title">Your full breakdown</p>
+      <div id="score-bars"></div>
+    </div>
+
+    <hr style="border:none; border-top:1px solid var(--rule); margin-bottom:28px;">
+
+    <!-- Dynamic copy -->
+    <div class="result-body" id="result-copy"></div>
+
+    <!-- CTA -->
+    <div class="result-cta" id="result-cta"></div>
+
+    <span class="retake-link" onclick="retakeQuiz()">← Retake the quiz</span>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <p>© 2025 Thrival Living. All rights reserved. · <a href="/corporate" style="color:var(--subtext); text-decoration:none;">Corporate Wellness</a></p>
+</footer>
+
+<!-- Hidden Netlify form -->
+<form name="quiz-results" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="first-name">
+  <input type="email" name="email">
+  <input type="text" name="grounding">
+  <input type="text" name="stillness">
+  <input type="text" name="opening">
+  <input type="text" name="strength">
+  <input type="text" name="thriving">
+  <input type="text" name="top-result">
+</form>
+
+<script>
+const scores = { grounding:0, stillness:0, opening:0, strength:0, thriving:0 };
+let currentQ = 1;
+const totalQ = 6;
+
+const LABELS = {
+  grounding: 'Grounding',
+  stillness:  'Stillness',
+  opening:    'Opening',
+  strength:   'Strength',
+  thriving:   'Thriving'
+};
+
+const RESULTS = {
+  grounding: {
+    title:    'Your body is calling for Grounding.',
+    subtitle: 'Autumn — Coming back to earth.',
+    body: `
+      <p>Your body isn't broken. It's just lost its footing.</p>
+      <p>What you're feeling — that sense of being unsteady, scattered, a little disconnected from yourself — isn't age and it isn't permanent. It's your body asking to be brought back to the basics. Back to the ground. Back to itself.</p>
+      <p class="pull">When the body finds its ground again, everything else settles too.</p>
+      <p>Grounding work is about reconnecting through weight, breath and presence. Standing barefoot. Feeling the earth beneath you. Moving slowly enough to notice you're actually moving.</p>
+    `,
+    cta: `<h3>Your next step.</h3><p>The free guide <em>Why Your Body Feels Different After 60</em> includes three simple grounding practices you can start today — no equipment, no experience needed.</p><a href="/after-60" class="btn-cta">Get the Free Guide →</a>`
+  },
+  stillness: {
+    title:    'Your body is calling for Stillness.',
+    subtitle: 'Winter — Learning to listen.',
+    body: `
+      <p>Your body has been trying to get your attention for a while. You've been pushing through — and you've managed — but there's a cost.</p>
+      <p>What your body needs most right now isn't more effort. It's permission to slow down. To be heard.</p>
+      <p class="pull">The body whispers before it screams. Stillness is how you learn to hear it.</p>
+      <p>Stillness work isn't passive. It's deeply intentional. It's the practice of paying attention — to sensation, to breath, to the quiet signals your body sends before they become loud ones.</p>
+    `,
+    cta: `<h3>Your next step.</h3><p>The free guide <em>Why Your Body Feels Different After 60</em> will help you understand what your body has been trying to tell you — and give you a gentler way forward.</p><a href="/after-60" class="btn-cta">Get the Free Guide →</a>`
+  },
+  opening: {
+    title:    'Your body is calling for Opening.',
+    subtitle: 'Spring — Expanding back into yourself.',
+    body: `
+      <p>You remember what it felt like to move freely. That memory is still there — and so is the possibility.</p>
+      <p>What you're experiencing as stiffness and restriction isn't your body wearing out. It's your body contracting around years of patterns — sitting, protecting, repeating the same limited movements.</p>
+      <p class="pull">Freedom of movement isn't something you lost. It's something you can reclaim.</p>
+      <p>Opening work is about creating space. Expanding what's contracted. Reaching into the edges of your range and reminding your body that it can go there.</p>
+    `,
+    cta: `<h3>Your next step.</h3><p>The free guide <em>Why Your Body Feels Different After 60</em> explains exactly why your body tightens — and what you can start doing today to open it back up.</p><a href="/after-60" class="btn-cta">Get the Free Guide →</a>`
+  },
+  strength: {
+    title:    'Your body is calling for Strength.',
+    subtitle: 'Summer — Discovering what you\'re capable of.',
+    body: `
+      <p>You're more connected than you realise. What's missing isn't the ability — it's the confidence.</p>
+      <p>Somewhere along the way you started second-guessing what your body could do. Maybe after an injury. Maybe just from the slow accumulation of caution that comes with getting older.</p>
+      <p class="pull">Your body is more capable than you've been giving it credit for. It's time to find out.</p>
+      <p>Strength work isn't about lifting heavier or pushing harder. It's about building the kind of quiet, functional capability that lets you do the things that matter — without hesitation.</p>
+    `,
+    cta: `<h3>Your next step.</h3><p>The free guide <em>Why Your Body Feels Different After 60</em> will help you understand what's been holding your body back — and what to do about it.</p><a href="/after-60" class="btn-cta">Get the Free Guide →</a>`
+  },
+  thriving: {
+    title:    'You\'re already Thriving.',
+    subtitle: 'You\'re doing what Thrival Living is all about.',
+    body: `
+      <p>You came here curious — and what you've found is that you're already on the right path.</p>
+      <p>Your body feels good. You're moving well. You're connected to yourself. That's not something to take for granted — it's something to protect, nurture and build on.</p>
+      <p class="pull">You're not here because you're broken. You're here because you understand the value of what you have.</p>
+      <p>The people who thrive longest aren't the ones who wait until something goes wrong. They're the ones who keep showing up — gently, consistently, with intention.</p>
+    `,
+    cta: `<h3>Keep the conversation going.</h3><p>The Thrival Living Circle is built for people exactly like you — a gentle daily practice to keep your body connected, capable and moving freely for the long haul.</p><a href="/circle" class="btn-cta">Discover The Circle →</a>`
+  }
+};
+
+const TAG_COPY = {
+  grounding: { top: 'This is where your body needs the most attention right now', second: 'Building this will change how you feel every day', rest: 'Already working quietly for you' },
+  stillness:  { top: 'This is where your body needs the most attention right now', second: 'Nurturing this will deepen your practice', rest: 'Already working quietly for you' },
+  opening:    { top: 'This is where your body needs the most attention right now', second: 'Improving this will transform how you move', rest: 'Already working quietly for you' },
+  strength:   { top: 'This is where your body needs the most attention right now', second: 'Building this will change what you believe you can do', rest: 'Already working quietly for you' },
+  thriving:   { top: 'You\'re already living this — keep nurturing it', second: 'A little more of this will go a long way', rest: 'Solid foundation here' }
+};
+
+function startQuiz() {
+  document.getElementById('intro-section').style.display = 'none';
+  document.getElementById('quiz-section').style.display = 'block';
+  updateProgress();
+}
+
+function selectOption(btn, outcome) {
+  const allOpts = btn.closest('.options').querySelectorAll('.option');
+  allOpts.forEach(o => o.classList.remove('selected'));
+  btn.classList.add('selected');
+  scores[outcome]++;
+  setTimeout(() => advanceQuestion(), 380);
+}
+
+function advanceQuestion() {
+  if (currentQ < totalQ) {
+    document.getElementById('q' + currentQ).classList.remove('active');
+    currentQ++;
+    document.getElementById('q' + currentQ).classList.add('active');
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    document.getElementById('quiz-section').style.display = 'none';
+    document.getElementById('email-gate').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function updateProgress() {
+  const pct = Math.round(((currentQ - 1) / totalQ) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = 'Question ' + currentQ + ' of ' + totalQ;
+  document.getElementById('progress-pct').textContent = pct + '%';
+}
+
+function showResult(e) {
+  e.preventDefault();
+  const name = document.getElementById('first-name').value;
+  const email = document.getElementById('email-input').value;
+  const topResult = getTopResult();
+
+  // Netlify submission
+  const fd = new FormData();
+  fd.append('form-name', 'quiz-results');
+  fd.append('first-name', name);
+  fd.append('email', email);
+  fd.append('top-result', topResult);
+  Object.keys(scores).forEach(k => fd.append(k, scores[k]));
+  fetch('/', { method: 'POST', body: fd }).catch(() => {});
+
+  // Build result
+  buildResult(name, topResult);
+
+  document.getElementById('email-gate').classList.remove('active');
+  document.getElementById('result-block').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function getTopResult() {
+  return Object.entries(scores).reduce((a, b) => b[1] > a[1] ? b : a)[0];
+}
+
+function buildResult(name, top) {
+  const r = RESULTS[top];
+  const firstName = name.split(' ')[0];
+
+  document.getElementById('result-greeting').textContent = firstName + ', here is your body breakdown.';
+  document.getElementById('result-title').textContent = r.title;
+  document.getElementById('result-subtitle').textContent = r.subtitle;
+  document.getElementById('result-copy').innerHTML = r.body;
+  document.getElementById('result-cta').innerHTML = r.cta;
+
+  // Build score bars
+  const total = Object.values(scores).reduce((a, b) => a + b, 0);
+  const sorted = Object.entries(scores)
+    .map(([k, v]) => ({ key: k, val: v, pct: total > 0 ? Math.round((v / total) * 100) : 0 }))
+    .sort((a, b) => b.val - a.val);
+
+  let barsHTML = '';
+  sorted.forEach((item, i) => {
+    const fillClass = i === 0 ? 'top' : i === 1 ? 'second' : 'rest';
+    const tagCopy = i === 0
+      ? TAG_COPY[item.key].top
+      : i === 1
+        ? TAG_COPY[item.key].second
+        : TAG_COPY[item.key].rest;
+    const tagClass = i < 2 ? 'score-tag highlight' : 'score-tag';
+
+    barsHTML += `
+      <div class="score-row">
+        <div class="score-row-label">
+          <span class="score-label-name">${LABELS[item.key]}</span>
+          <span class="score-label-pct">${item.pct}%</span>
+        </div>
+        <div class="score-bar-bg">
+          <div class="score-bar-fill ${fillClass}" style="width:0%" data-width="${item.pct}%"></div>
+        </div>
+        <p class="${tagClass}">${tagCopy}</p>
+      </div>`;
+  });
+
+  document.getElementById('score-bars').innerHTML = barsHTML;
+
+  // Animate bars after render
+  setTimeout(() => {
+    document.querySelectorAll('.score-bar-fill[data-width]').forEach(bar => {
+      bar.style.width = bar.getAttribute('data-width');
+    });
+  }, 100);
+}
+
+function retakeQuiz() {
+  Object.keys(scores).forEach(k => scores[k] = 0);
+  currentQ = 1;
+  document.getElementById('result-block').classList.remove('active');
+  document.getElementById('email-gate').classList.remove('active');
+  document.querySelectorAll('.question-block').forEach(q => q.classList.remove('active'));
+  document.getElementById('q1').classList.add('active');
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  updateProgress();
+  document.getElementById('intro-section').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
