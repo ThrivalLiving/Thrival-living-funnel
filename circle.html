@@ -9,6 +9,7 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  .logo-mark { width: 36px !important; height: 36px !important; }
   :root {
     --cream:      #FAF6EF;
     --ochre:      #C8893A;
@@ -408,16 +409,52 @@
     .pricing-block { padding: 32px 20px; }
     .pricing-amount { font-size: 2.6rem; }
   }
-</style>
+
+    .site-nav { display: flex; background: var(--teal); padding: 0 24px; overflow-x: auto; }
+    .site-nav a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.06em; padding: 14px 16px; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.2s; }
+    .site-nav a:hover { color: white; }
+    .site-nav a.active { color: white; border-bottom-color: var(--ochre); }
+  </style>
 </head>
 <body>
+
+  <header style="display:flex; align-items:center; gap:12px; padding:20px 24px; border-bottom:1px solid #C8893A; background:#FAF6EF;">
+    <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="48" stroke="rgba(46,107,101,0.4)" stroke-width="0.8"/>
+      <circle cx="50" cy="32" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+      <circle cx="50" cy="68" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+      <circle cx="34" cy="41" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+      <circle cx="66" cy="41" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+      <circle cx="34" cy="59" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+      <circle cx="66" cy="59" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+      <circle cx="50" cy="50" r="18" stroke="rgba(46,107,101,0.6)" stroke-width="0.8"/>
+      <circle cx="50" cy="32" r="3" fill="rgba(200,137,58,0.9)"/>
+      <circle cx="50" cy="68" r="3" fill="rgba(46,107,101,0.8)"/>
+    </svg>
+    <p style="font-size:0.75rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:#2E6B65; font-family:sans-serif;">Thrival Living</p>
+    <span style="margin-left:auto; font-style:italic; font-size:0.65rem; color:#8A7660; letter-spacing:0.04em; font-family:sans-serif;">Move Better. Feel Stronger. Thrive Longer.</span>
+  </header>
+
+  <nav style="display:flex; background:#2E6B65; padding:0 24px; overflow-x:auto;">
+    <a href="/" style="color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.78rem; font-weight:400; letter-spacing:0.06em; padding:14px 16px; white-space:nowrap; border-bottom:2px solid transparent; font-family:sans-serif;">Home</a>
+    <a href="/community" style="color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.78rem; font-weight:400; letter-spacing:0.06em; padding:14px 16px; white-space:nowrap; border-bottom:2px solid transparent; font-family:sans-serif;">Community Sessions</a>
+    <a href="/after-60" style="color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.78rem; font-weight:400; letter-spacing:0.06em; padding:14px 16px; white-space:nowrap; border-bottom:2px solid transparent; font-family:sans-serif;">Free Guide</a>
+    <a href="/circle" style="color:white; text-decoration:none; font-size:0.78rem; font-weight:400; letter-spacing:0.06em; padding:14px 16px; white-space:nowrap; border-bottom:2px solid #C8893A; font-family:sans-serif;">The Circle</a>
+    <a href="/quiz" style="color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.78rem; font-weight:400; letter-spacing:0.06em; padding:14px 16px; white-space:nowrap; border-bottom:2px solid transparent; font-family:sans-serif;">Quiz</a>
+  </nav>
+
+
+  <!-- HEADER -->
+  
+
+  <!-- NAV -->
+  
+
 <div class="page">
 
   <!-- Masthead -->
-  <header class="masthead">
-    <a href="https://thrivalliving.com.au" class="masthead-brand">Thrival Living</a>
-    <span class="masthead-tag">For women 60+</span>
-  </header>
+  
+
 
   <!-- Hero -->
   <div class="hero">
@@ -442,7 +479,7 @@
   </div>
 
   <!-- VSL — framed, rounded, warm card -->
-  <div style="max-width:300px; margin:0 auto 48px; padding:12px; background:var(--ochre-pale); border-radius:4px; box-shadow:0 4px 24px rgba(46,38,22,0.08);">
+  <div style="max-width:240px; margin:0 auto 48px; padding:10px; background:var(--ochre-pale); border-radius:4px; box-shadow:0 4px 24px rgba(46,38,22,0.08);">
     <div style="position:relative; padding-bottom:177.78%; height:0; overflow:hidden; border-radius:3px;">
       <iframe
         src="https://www.youtube.com/embed/K9_WNZEtjh8"
