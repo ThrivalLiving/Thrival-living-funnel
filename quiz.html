@@ -103,4 +103,458 @@
   .flow-caption { text-align: center; font-size: 0.78rem; color: var(--subtext); font-style: italic; margin-bottom: 4px; }
 
   .trust-card { background: var(--teal); color: white; text-align: center; border-radius: 10px; padding: 28px 24px; margin: 8px 0 6px; }
-  .trust-eyebrow { font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase;
+  .trust-eyebrow { font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+  .trust-title { font-family: 'Playfair Display', serif; font-weight: 500; font-size: 1.55rem; margin-bottom: 6px; }
+  .trust-sub { font-size: 0.86rem; color: rgba(255,255,255,0.75); line-height: 1.6; max-width: 360px; margin: 0 auto; }
+
+  .result-body p { font-size: 1rem; line-height: 1.85; color: var(--body); font-weight: 300; margin-bottom: 16px; }
+  .result-body strong { color: var(--teal); font-weight: 600; }
+  .result-body .pull { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.12rem; color: var(--teal); line-height: 1.75; margin: 22px 0; padding-left: 16px; border-left: 2px solid var(--ochre); }
+
+  .result-cta { background: var(--ochre-pale); border-left: 3px solid var(--ochre); border-radius: 0 8px 8px 0; padding: 28px 24px; margin: 36px 0; }
+  .result-cta h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 1.2rem; color: var(--teal); margin-bottom: 10px; }
+  .result-cta p { font-size: 0.92rem; color: var(--body); margin-bottom: 16px; font-weight: 300; line-height: 1.75; }
+  .btn-cta { display: inline-block; padding: 15px 32px; background: var(--teal); color: white; text-decoration: none; font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.06em; transition: background 0.2s; border: none; cursor: pointer; border-radius: 4px; }
+  .btn-cta:hover { background: var(--ochre-deep); }
+  .retake-link { display: block; text-align: center; margin-top: 20px; font-size: 0.82rem; color: var(--subtext); cursor: pointer; font-style: italic; text-decoration: underline; }
+
+  .site-footer { text-align: center; padding: 24px; font-size: 0.72rem; color: var(--subtext); border-top: 1px solid var(--rule); margin-top: 40px; letter-spacing: 0.04em; }
+
+  @media (max-width: 480px) {
+    html { font-size: 16px; }
+    .site-header { padding: 14px 20px; }
+    .tagline-header { display: none; }
+    .site-nav a { padding: 10px 12px; font-size: 0.72rem; }
+    .intro { padding: 18px 0 24px; }
+    .intro h1 { font-size: 1.55rem; margin-bottom: 12px; }
+    .eyebrow { margin-bottom: 10px; }
+    .intro-rule { margin: 12px 0; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="48" stroke="rgba(46,107,101,0.4)" stroke-width="0.8"/>
+      <circle cx="50" cy="32" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+      <circle cx="50" cy="68" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+      <circle cx="34" cy="41" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+      <circle cx="66" cy="41" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+      <circle cx="34" cy="59" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+      <circle cx="66" cy="59" r="18" stroke="rgba(46,107,101,0.5)" stroke-width="0.8"/>
+      <circle cx="50" cy="50" r="18" stroke="rgba(46,107,101,0.6)" stroke-width="0.8"/>
+      <circle cx="50" cy="32" r="3" fill="rgba(200,137,58,0.9)"/>
+      <circle cx="50" cy="68" r="3" fill="rgba(46,107,101,0.8)"/>
+    </svg>
+    <p class="brand">Thrival Living</p>
+    <span class="tagline-header">Move Better. Feel Stronger. Thrive Longer.</span>
+  </header>
+
+  <nav class="site-nav">
+    <a href="/">Home</a>
+    <a href="/community">Community Sessions</a>
+    <a href="/after-60">Free Guide</a>
+    <a href="/circle">The Circle</a>
+    <a href="/quiz" class="active">Quiz</a>
+  </nav>
+
+  <div class="page">
+
+    <!-- INTRO -->
+    <div class="intro" id="intro-section">
+      <p class="eyebrow">Thrival Living · 2 minute quiz</p>
+      <h1>What is your body telling you about the years ahead?</h1>
+      <p>The way you move today says a lot about how freely you say yes to life tomorrow.</p>
+      <p class="mechanism">8 quick questions → your personal Body Trust Snapshot across Strength, Balance, Mobility, Coordination &amp; Body Confidence.</p>
+      <div class="intro-rule"></div>
+      <button class="btn-cta" onclick="startQuiz()">Begin the Quiz →</button>
+      <p class="future-line">Your body isn't a prediction of where you're headed. It's information — and this is where you start noticing it.</p>
+    </div>
+
+    <!-- QUIZ -->
+    <div id="quiz-section" style="display:none;">
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span id="progress-text">Question 1 of 8</span>
+          <span id="progress-pct">0%</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+      </div>
+
+      <div class="question-block active" id="q1">
+        <p class="question-num">Question 1 of 8</p>
+        <p class="question-text">You're on the floor playing with the grandkids and everyone suddenly decides to head outside. What happens next?</p>
+        <div class="options">
+          <button class="option" onclick="selectOption(this,1,3)"><span class="option-letter">A</span><span>I'm straight up and following them</span></button>
+          <button class="option" onclick="selectOption(this,1,2)"><span class="option-letter">B</span><span>I get up in my own way, maybe using a hand</span></button>
+          <button class="option" onclick="selectOption(this,1,1)"><span class="option-letter">C</span><span>I take a moment and work out the easiest way up</span></button>
+          <button class="option" onclick="selectOption(this,1,0)"><span class="option-letter">D</span><span>I'd probably have avoided getting onto the floor in the first place</span></button>
+        </div>
+      </div>
+
+      <div class="question-block" id="q2">
+        <p class="question-num">Question 2 of 8</p>
+        <p class="question-text">You're somewhere beautiful and the path ahead turns uneven — sand, cobblestones, rocks or a bush track. What happens?</p>
+        <div class="options">
+          <button class="option" onclick="selectOption(this,2,3)"><span class="option-letter">A</span><span>I keep exploring without giving it much thought</span></button>
+          <button class="option" onclick="selectOption(this,2,2)"><span class="option-letter">B</span><span>I keep going, just a little more carefully</span></button>
+          <button class="option" onclick="selectOption(this,2,1)"><span class="option-letter">C</span><span>I slow down and really watch where I'm stepping</span></button>
+          <button class="option" onclick="selectOption(this,2,0)"><span class="option-letter">D</span><span>I'd probably look for an easier way around</span></button>
+        </div>
+      </div>
+
+      <div class="question-block" id="q3">
+        <p class="question-num">Question 3 of 8</p>
+        <p class="question-text">There's something you really want to see or do, but getting there means stairs, a steep path or a few awkward steps. What's your first thought?</p>
+        <div class="options">
+          <button class="option" onclick="selectOption(this,3,3)"><span class="option-letter">A</span><span>Let's go</span></button>
+          <button class="option" onclick="selectOption(this,3,2)"><span class="option-letter">B</span><span>I'll do it — I'll just take my time</span></button>
+          <button class="option" onclick="selectOption(this,3,1)"><span class="option-letter">C</span><span>I'll start wondering whether there's an easier way</span></button>
+          <button class="option" onclick="selectOption(this,3,0)"><span class="option-letter">D</span><span>I'd seriously consider whether it was worth attempting</span></button>
+        </div>
+      </div>
+
+      <div class="question-block" id="q4">
+        <p class="question-num">Question 4 of 8</p>
+        <p class="question-text">Something unexpected happens — a ball comes your way, someone calls from behind you, or you suddenly need to change direction. How does your body respond?</p>
+        <div class="options">
+          <button class="option" onclick="selectOption(this,4,3)"><span class="option-letter">A</span><span>I react without really thinking about it</span></button>
+          <button class="option" onclick="selectOption(this,4,2)"><span class="option-letter">B</span><span>I react comfortably, just not quite as quickly as I once did</span></button>
+          <button class="option" onclick="selectOption(this,4,1)"><span class="option-letter">C</span><span>I usually need a moment to steady or organise myself</span></button>
+          <button class="option" onclick="selectOption(this,4,0)"><span class="option-letter">D</span><span>Sudden movements are something I tend to avoid</span></button>
+        </div>
+      </div>
+
+      <div class="question-block" id="q5">
+        <p class="question-num">Question 5 of 8</p>
+        <p class="question-text">Imagine a full day out — walking, carrying a bag, getting in and out of the car, sitting somewhere low, reaching for things. How much thought would you give your body?</p>
+        <div class="options">
+          <button class="option" onclick="selectOption(this,5,3)"><span class="option-letter">A</span><span>Almost none — I'd just enjoy the day</span></button>
+          <button class="option" onclick="selectOption(this,5,2)"><span class="option-letter">B</span><span>I'd notice my body occasionally but wouldn't change much</span></button>
+          <button class="option" onclick="selectOption(this,5,1)"><span class="option-letter">C</span><span>I'd pace myself or plan around certain things</span></button>
+          <button class="option" onclick="selectOption(this,5,0)"><span class="option-letter">D</span><span>My body would influence quite a few of the day's decisions</span></button>
+        </div>
+      </div>
+
+      <div class="question-block" id="q6">
+        <p class="question-num">Question 6 of 8</p>
+        <p class="question-text">You wake up with something planned that you're really looking forward to — but your body feels stiff. What usually happens?</p>
+        <div class="options">
+          <button class="option" onclick="selectOption(this,6,3)"><span class="option-letter">A</span><span>I get moving and it rarely changes my plans</span></button>
+          <button class="option" onclick="selectOption(this,6,2)"><span class="option-letter">B</span><span>I give myself some time, then usually get on with the day</span></button>
+          <button class="option" onclick="selectOption(this,6,1)"><span class="option-letter">C</span><span>I modify what I'm doing depending on how I feel</span></button>
+          <button class="option" onclick="selectOption(this,6,0)"><span class="option-letter">D</span><span>There's a good chance I'd change or cancel the plan</span></button>
+        </div>
+      </div>
+
+      <div class="question-block" id="q7">
+        <p class="question-num">Question 7 of 8</p>
+        <p class="question-text">Someone invites you to try something you've never done before — a new activity, class, adventure or experience. What's your instinct?</p>
+        <div class="options">
+          <button class="option" onclick="selectOption(this,7,3)"><span class="option-letter">A</span><span>Absolutely — let's try it</span></button>
+          <button class="option" onclick="selectOption(this,7,2)"><span class="option-letter">B</span><span>I'd probably say yes, with a few nerves</span></button>
+          <button class="option" onclick="selectOption(this,7,1)"><span class="option-letter">C</span><span>I'd want to know exactly what was involved before deciding</span></button>
+          <button class="option" onclick="selectOption(this,7,0)"><span class="option-letter">D</span><span>My first instinct would probably be "my body can't do that"</span></button>
+        </div>
+      </div>
+
+      <div class="question-block" id="q8">
+        <p class="question-num">Question 8 of 8</p>
+        <p class="question-text">When something comes up that you'd genuinely love to do, how often does your body become part of the decision?</p>
+        <div class="options">
+          <button class="option" onclick="selectOption(this,8,3)"><span class="option-letter">A</span><span>Hardly ever — I generally trust my body to keep up</span></button>
+          <button class="option" onclick="selectOption(this,8,2)"><span class="option-letter">B</span><span>Sometimes — there are things I think twice about</span></button>
+          <button class="option" onclick="selectOption(this,8,1)"><span class="option-letter">C</span><span>Often — I find myself adapting or avoiding certain things</span></button>
+          <button class="option" onclick="selectOption(this,8,0)"><span class="option-letter">D</span><span>A lot — what my body can handle shapes many of my decisions</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL GATE -->
+    <div class="email-gate" id="email-gate">
+      <p class="eyebrow">Almost there</p>
+      <h2>Your result is ready — and there's an interesting gap in it.</h2>
+      <p>We've looked at how your answers connect across strength, balance, mobility, coordination and confidence. One area is helping you say yes. Another may be influencing your decisions more than you realise. Enter your name and email to see your Body Trust result and personal snapshot.</p>
+      <form class="email-form" id="email-form" onsubmit="showResult(event)">
+        <input type="text" id="first-name" placeholder="Your first name" required autocomplete="given-name">
+        <input type="email" id="email-input" placeholder="Your email address" required autocomplete="email">
+        <button type="submit" class="btn-reveal">Show Me What My Body Is Telling Me →</button>
+      </form>
+      <p style="font-size:0.72rem; color:var(--subtext); font-style:italic; text-align:center; margin-top:12px;">No spam. Unsubscribe any time.</p>
+    </div>
+
+    <!-- RESULT -->
+    <div class="result-block" id="result-block">
+
+      <p class="result-eyebrow">Your Result</p>
+      <p class="result-name" id="result-greeting"></p>
+      <p class="result-title" id="result-title"></p>
+      <p class="result-subtitle" id="result-subtitle"></p>
+      <div class="result-rule"></div>
+
+      <p class="snapshot-title">Your Thrival Body Snapshot</p>
+      <div id="snap-rows"></div>
+
+      <div class="flow-arrow">↓</div>
+      <p class="flow-caption">which adds up to</p>
+
+      <div class="trust-card">
+        <p class="trust-eyebrow">Body Trust</p>
+        <p class="trust-title" id="trust-title"></p>
+        <p class="trust-sub" id="trust-sub"></p>
+      </div>
+
+      <div class="result-body" id="result-copy"></div>
+
+      <div class="result-cta">
+        <h3>Now you know what your body is telling you.</h3>
+        <p>The next step is learning how to listen — and how to respond. The Thrival Living Circle is a community and weekly practice in looking after the body you live in. Through Grounding, Stillness, Opening and Strength, members learn to observe their own movement, build trust, and gradually create more capacity for life.</p>
+        <p>Because the real goal isn't becoming better at exercise. It's building a body that keeps saying yes.</p>
+        <a href="/circle" class="btn-cta">Explore The Circle →</a>
+      </div>
+
+      <span class="retake-link" onclick="retakeQuiz()">← Retake the quiz</span>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2026 Thrival Living. All rights reserved. · <a href="/corporate" style="color:var(--subtext); text-decoration:none;">Corporate Wellness</a></p>
+  </footer>
+
+  <!-- Hidden Netlify form -->
+  <form hidden method='post' name='quiz-results'><input type='hidden' name='form-name' value='quiz-results' />
+    <input type="text" name="first-name">
+    <input type="email" name="email">
+    <input type="text" name="strength">
+    <input type="text" name="balance">
+    <input type="text" name="mobility">
+    <input type="text" name="coordination">
+    <input type="text" name="confidence">
+    <input type="text" name="body-trust">
+    <input type="text" name="top-strength-area">
+    <input type="text" name="growth-area">
+  </form>
+
+<script>
+// Each answer scores 0-3. Each question feeds one or more categories with a weight.
+const answers = {};
+let currentQ = 1;
+const totalQ = 8;
+
+const MAP = {
+  1: [['strength', 1.0], ['mobility', 0.5], ['confidence', 0.5]],
+  2: [['balance', 1.0], ['coordination', 0.5], ['confidence', 0.5]],
+  3: [['strength', 1.0], ['balance', 0.5], ['confidence', 0.5]],
+  4: [['coordination', 1.0], ['balance', 0.5]],
+  5: [['mobility', 1.0], ['strength', 0.5], ['confidence', 0.5]],
+  6: [['mobility', 1.0], ['confidence', 0.5]],
+  7: [['coordination', 1.0], ['confidence', 0.5]],
+  8: [['confidence', 1.5]]
+};
+
+const CATEGORY_INFO = {
+  strength:     { label: 'Strength',        low: 'Needs More Support',  mid: 'Capable',    high: 'Reliable' },
+  balance:      { label: 'Balance',         low: 'Needs More Trust',    mid: 'Steady',     high: 'Reliable' },
+  mobility:     { label: 'Mobility',        low: 'Feeling Restricted',  mid: 'Mostly Free',high: 'Free & Easy' },
+  coordination: { label: 'Coordination',    low: 'Takes Some Thought',  mid: 'Responsive', high: 'Natural & Adaptable' },
+  confidence:   { label: 'Body Confidence', low: 'Cautious',            mid: 'Considered', high: 'Trusting' }
+};
+const CATEGORY_ORDER = ['strength','balance','mobility','coordination','confidence'];
+
+// Four current-state profiles — not progress bands.
+const RESULT_PROFILES = [
+  {
+    max: 35, trustTitle: 'Guarded',
+    trustSub: "Your body currently plays a big part in your decisions — often before you've had the chance to try.",
+    title: 'Your world may be smaller than it needs to be.',
+    explanation: "Your answers suggest your body may be influencing more of your life than you'd like.",
+    intro: "<p>You may already be avoiding certain situations, changing plans, or deciding something isn't for you before you've had the chance to try. This isn't a prediction of where you're heading — it's a snapshot of where you are today. And awareness gives you somewhere to begin.</p>"
+  },
+  {
+    max: 60, trustTitle: 'Cautious',
+    trustSub: "Your body has started getting a bigger vote in some decisions — enough to make you pause, plan or think twice.",
+    title: 'Your body is asking you to choose carefully.',
+    explanation: "There's still plenty you want to say yes to — but your body has started getting a bigger vote in the decision.",
+    intro: "<p>You may find yourself planning around certain movements, choosing the easier option, or hesitating before something unfamiliar. Your snapshot below can help show where that hesitation is coming from.</p>"
+  },
+  {
+    max: 80, trustTitle: 'Building',
+    trustSub: "You still say yes to most things — just with a little more thought or preparation than before.",
+    title: 'Your body still says yes — with a little consideration first.',
+    explanation: "You haven't stopped doing the things you enjoy. But there are moments where you pause, modify or think twice.",
+    intro: "<p>That doesn't mean something is wrong. It simply shows where a little more trust and capacity could create even more freedom.</p>"
+  },
+  {
+    max: 101, trustTitle: 'Trusting',
+    trustSub: "Your body rarely enters the decision — more often than not, you just go.",
+    title: 'Your body mostly says YES.',
+    explanation: "There's a lot you already trust your body to handle — it rarely enters the decision when something comes up.",
+    intro: "<p>That doesn't mean there's nothing left to explore. The opportunity here isn't fixing something — it's maintaining, exploring and expanding what's already possible for you.</p>"
+  }
+];
+
+function startQuiz() {
+  document.getElementById('intro-section').style.display = 'none';
+  document.getElementById('quiz-section').style.display = 'block';
+  updateProgress();
+}
+
+function selectOption(btn, qNum, score) {
+  const allOpts = btn.closest('.options').querySelectorAll('.option');
+  allOpts.forEach(o => o.classList.remove('selected'));
+  btn.classList.add('selected');
+  answers[qNum] = score;
+  setTimeout(() => advanceQuestion(), 380);
+}
+
+function advanceQuestion() {
+  if (currentQ < totalQ) {
+    document.getElementById('q' + currentQ).classList.remove('active');
+    currentQ++;
+    document.getElementById('q' + currentQ).classList.add('active');
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    document.getElementById('quiz-section').style.display = 'none';
+    document.getElementById('email-gate').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function updateProgress() {
+  const pct = Math.round(((currentQ - 1) / totalQ) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = 'Question ' + currentQ + ' of ' + totalQ;
+  document.getElementById('progress-pct').textContent = pct + '%';
+}
+
+function computeCategoryScores() {
+  const totals = {}; const weights = {};
+  CATEGORY_ORDER.forEach(c => { totals[c] = 0; weights[c] = 0; });
+
+  Object.keys(answers).forEach(q => {
+    const score = answers[q];
+    (MAP[q] || []).forEach(([cat, weight]) => {
+      totals[cat] += score * weight;
+      weights[cat] += 3 * weight;
+    });
+  });
+
+  const pct = {};
+  CATEGORY_ORDER.forEach(c => {
+    pct[c] = weights[c] > 0 ? Math.round((totals[c] / weights[c]) * 100) : 0;
+  });
+  return pct;
+}
+
+function bandFor(pct) {
+  if (pct < 40) return 'low';
+  if (pct < 70) return 'mid';
+  return 'high';
+}
+
+function profileFor(pct) {
+  return RESULT_PROFILES.find(p => pct < p.max);
+}
+
+function showResult(e) {
+  e.preventDefault();
+  const name = document.getElementById('first-name').value;
+  const email = document.getElementById('email-input').value;
+  const pct = computeCategoryScores();
+  const overall = Math.round(CATEGORY_ORDER.reduce((sum, c) => sum + pct[c], 0) / CATEGORY_ORDER.length);
+  const profile = profileFor(overall);
+
+  const sortedByPct = CATEGORY_ORDER.slice().sort((a, b) => pct[b] - pct[a]);
+  const strongest = sortedByPct[0];
+  const growth = sortedByPct[sortedByPct.length - 1];
+
+  // Reveal the result first — this must never be blocked by a network issue.
+  try {
+    buildResult(name, pct, profile, strongest, growth);
+    document.getElementById('email-gate').classList.remove('active');
+    document.getElementById('result-block').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (revealErr) {
+    console.error('Quiz reveal error:', revealErr);
+    return;
+  }
+
+  // Best-effort lead capture — a failure here should never affect what the user sees.
+  try {
+    const fd = new FormData();
+    fd.append('form-name', 'quiz-results');
+    fd.append('first-name', name);
+    fd.append('email', email);
+    CATEGORY_ORDER.forEach(c => fd.append(c, pct[c]));
+    fd.append('body-trust', profile.title);
+    fd.append('top-strength-area', CATEGORY_INFO[strongest].label);
+    fd.append('growth-area', CATEGORY_INFO[growth].label);
+    fetch('/', { method: 'POST', body: fd }).catch(err => console.warn('Quiz lead submission failed:', err));
+  } catch (submitErr) {
+    console.warn('Quiz lead submission error:', submitErr);
+  }
+}
+
+function buildResult(name, pct, profile, strongest, growth) {
+  const firstName = name.split(' ')[0];
+
+  document.getElementById('result-greeting').textContent = firstName + ", here's what your body is telling you.";
+  document.getElementById('result-title').textContent = profile.title;
+  document.getElementById('result-subtitle').textContent = profile.explanation;
+
+  let rowsHTML = '';
+  CATEGORY_ORDER.forEach(c => {
+    const band = bandFor(pct[c]);
+    const info = CATEGORY_INFO[c];
+    const tag = info[band];
+    const barWidth = band === 'low' ? 33 : band === 'mid' ? 66 : 100;
+    rowsHTML += `
+      <div class="snap-row">
+        <div class="snap-row-top">
+          <span class="snap-name">${info.label}</span>
+          <span class="snap-tag">${tag}</span>
+        </div>
+        <div class="snap-bar-bg"><div class="snap-bar-fill" data-width="${barWidth}%"></div></div>
+      </div>`;
+  });
+  document.getElementById('snap-rows').innerHTML = rowsHTML;
+  setTimeout(() => {
+    document.querySelectorAll('.snap-bar-fill[data-width]').forEach(bar => {
+      bar.style.width = bar.getAttribute('data-width');
+    });
+  }, 100);
+
+  document.getElementById('trust-title').textContent = profile.trustTitle;
+  document.getElementById('trust-sub').textContent = profile.trustSub;
+
+  const strongLabel = CATEGORY_INFO[strongest].label;
+  const growthLabel = CATEGORY_INFO[growth].label;
+
+  document.getElementById('result-copy').innerHTML = profile.intro + `
+    <p>Here's what's interesting about your result. Your answers around <strong>${strongLabel}</strong> appear to be one of the things helping you move through life with confidence. Your answers around <strong>${growthLabel}</strong> may be influencing your choices more than you realise.</p>
+    <p>Your body doesn't determine where you're headed — it's simply giving you information. Learning to notice it is where Thrival Living begins.</p>
+    <p>Your body is more than five separate scores. Strength, balance, mobility, coordination and confidence all work together — quietly, all day, every day.</p>
+    <p>And ultimately, we're not trying to build a body that's good at tests. We're building a body that lets you get down on the floor with the grandkids, explore somewhere you've never been, walk across the sand, travel, try something new, and keep up with the people you love.</p>
+    <p class="pull">The goal isn't a perfect score. It's a body you trust to keep saying YES to the life you want to live.</p>
+  `;
+}
+
+function retakeQuiz() {
+  Object.keys(answers).forEach(k => delete answers[k]);
+  currentQ = 1;
+  document.getElementById('result-block').classList.remove('active');
+  document.getElementById('email-gate').classList.remove('active');
+  document.querySelectorAll('.question-block').forEach(q => q.classList.remove('active'));
+  document.getElementById('q1').classList.add('active');
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  updateProgress();
+  document.getElementById('intro-section').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
