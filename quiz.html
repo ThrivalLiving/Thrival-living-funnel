@@ -166,7 +166,7 @@
       <p class="eyebrow">Thrival Living · 2 minute quiz</p>
       <h1>What is your body telling you about the years ahead?</h1>
       <p>The way you move today says a lot about how freely you say yes to life tomorrow.</p>
-      <p class="mechanism">8 quick questions → your personal Body Trust Snapshot across Strength, Balance, Mobility, Coordination &amp; Body Confidence.</p>
+      <p class="mechanism">8 quick questions → your personal Body Trust snapshot.</p>
       <div class="intro-rule"></div>
       <button class="btn-cta" onclick="startQuiz()">Begin the Quiz →</button>
       <p class="future-line">Your body isn't a prediction of where you're headed. It's information — and this is where you start noticing it.</p>
@@ -324,7 +324,8 @@
   </footer>
 
   <!-- Hidden Netlify form -->
-  <form hidden method='post' name='quiz-results'><input type='hidden' name='form-name' value='quiz-results' />
+  <form hidden method='post' name='quiz-results' netlify-honeypot="bot-field"><input type='hidden' name='form-name' value='quiz-results' />
+    <input type="hidden" name="bot-field" />
     <input type="text" name="first-name">
     <input type="email" name="email">
     <input type="text" name="strength">
@@ -484,15 +485,21 @@ function showResult(e) {
 
   // Best-effort lead capture — a failure here should never affect what the user sees.
   try {
-    const fd = new FormData();
-    fd.append('form-name', 'quiz-results');
-    fd.append('first-name', name);
-    fd.append('email', email);
-    CATEGORY_ORDER.forEach(c => fd.append(c, pct[c]));
-    fd.append('body-trust', profile.title);
-    fd.append('top-strength-area', CATEGORY_INFO[strongest].label);
-    fd.append('growth-area', CATEGORY_INFO[growth].label);
-    fetch('/', { method: 'POST', body: fd }).catch(err => console.warn('Quiz lead submission failed:', err));
+    const params = new URLSearchParams();
+    params.append('form-name', 'quiz-results');
+    params.append('bot-field', '');
+    params.append('first-name', name);
+    params.append('email', email);
+    CATEGORY_ORDER.forEach(c => params.append(c, pct[c]));
+    params.append('body-trust', profile.title);
+    params.append('top-strength-area', CATEGORY_INFO[strongest].label);
+    params.append('growth-area', CATEGORY_INFO[growth].label);
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString()
+    }).catch(err => console.warn('Quiz lead submission failed:', err));
   } catch (submitErr) {
     console.warn('Quiz lead submission error:', submitErr);
   }
