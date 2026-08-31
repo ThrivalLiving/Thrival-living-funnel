@@ -128,8 +128,46 @@
   .btn-cta { display: inline-block; padding: 15px 32px; background: var(--teal); color: white; text-decoration: none; font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.06em; transition: background 0.2s; border: none; cursor: pointer; border-radius: 4px; }
   .btn-cta:hover { background: var(--ochre-deep); }
   .retake-link { display: block; text-align: center; margin-top: 20px; font-size: 0.82rem; color: var(--subtext); cursor: pointer; font-style: italic; text-decoration: underline; }
+ 
+.share-section {
+  text-align: center;
+  margin-top: 32px;
+  padding: 28px 20px;
+  border-top: 1px solid var(--rule);
+}
 
-  .site-footer { text-align: center; padding: 24px; font-size: 0.72rem; color: var(--subtext); border-top: 1px solid var(--rule); margin-top: 40px; letter-spacing: 0.04em; }
+.share-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: var(--teal);
+  margin-bottom: 10px;
+}
+
+.share-section p {
+  font-size: 0.9rem;
+  color: var(--subtext);
+  max-width: 520px;
+  margin: 0 auto 18px;
+  line-height: 1.6;
+}
+
+.btn-share {
+  display: inline-block;
+  padding: 12px 26px;
+  background: transparent;
+  color: var(--teal);
+  border: 1px solid var(--teal);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.btn-share:hover {
+  background: var(--teal);
+  color: white;
+}  .site-footer { text-align: center; padding: 24px; font-size: 0.72rem; color: var(--subtext); border-top: 1px solid var(--rule); margin-top: 40px; letter-spacing: 0.04em; }
 
   @media (max-width: 480px) {
     html { font-size: 16px; }
@@ -325,6 +363,12 @@
         <a href="/circle" class="btn-cta">Explore The Circle →</a>
       </div>
 
+     <div class="share-section">
+  <h3>Know someone who might be curious about their result?</h3>
+  <p>Share the quiz with them. Sometimes a little awareness is all it takes to start looking at movement differently.</p>
+  <button class="btn-share" onclick="shareQuiz()">Share the quiz</button>
+</div>
+
       <span class="retake-link" onclick="retakeQuiz()">← Retake the quiz</span>
     </div>
 
@@ -392,7 +436,7 @@ const RESULT_PROFILES = [
     intro: "<p>You may find yourself planning around certain movements, choosing the easier option, or hesitating before something unfamiliar. Your snapshot below can help show where that hesitation is coming from.</p>"
   },
   {
-    max: 80, trustTitle: 'Building',
+    max: 80, trustTitle: 'Steady',
     trustSub: "You still say yes to most things — just with a little more thought or preparation than before.",
     title: 'Your body still says yes — with a little consideration first.',
     explanation: "You haven't stopped doing the things you enjoy. But there are moments where you pause, modify or think twice.",
@@ -571,6 +615,26 @@ function retakeQuiz() {
   updateProgress();
   document.getElementById('intro-section').style.display = 'block';
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+ async function shareQuiz() {
+  const shareData = {
+    title: 'What Is Your Body Telling You?',
+    text: 'I just took this quick Thrival Living quiz. You might find your result interesting too.',
+    url: 'https://thrivalliving.com.au/quiz'
+  };
+
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+    } catch (err) {
+      if (err.name !== 'AbortError') {
+        console.error('Share failed:', err);
+      }
+    }
+  } else {
+    await navigator.clipboard.writeText(shareData.url);
+    alert('Quiz link copied — you can now paste it into a message or post.');
+  }
 }
 </script>
 
