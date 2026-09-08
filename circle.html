@@ -14,6 +14,7 @@
 <meta name="twitter:description" content="A community and weekly practice in looking after the body you live in. $37/month founding rate.">
 <meta name="twitter:image" content="https://thrivalliving.com.au/thrival-og-image.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<script src="/analytics.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -253,7 +254,7 @@
     <h1>Build a body that keeps saying yes to the life you want to live.</h1>
     <p class="lede">Strength, balance, mobility and confidence — so you can keep doing more of what you love, for longer.</p>
     <p class="hero-sub">Simple movement. Real guidance. A community beside you.</p>
-    <a href="https://thrivalliving-coach.mvt.so/buy/21877" class="btn-primary">Join the Founding Circle — $37/month</a>
+    <a href="https://thrivalliving-coach.mvt.so/buy/21877" class="btn-primary" onclick="trackThrivalEvent('circle_join_click', { placement: 'hero' })">Join the Founding Circle — $37/month</a>
     <p class="hero-price">Founding members $37/month · Normally <s>$47/month</s> · No lock-in · Cancel anytime</p>
   </section>
 
@@ -360,7 +361,7 @@
     </div>
 
     <div class="mid-cta">
-      <a href="https://thrivalliving-coach.mvt.so/buy/21877" class="btn-primary">Join the Circle — $37/month →</a>
+      <a href="https://thrivalliving-coach.mvt.so/buy/21877" class="btn-primary" onclick="trackThrivalEvent('circle_join_click', { placement: 'middle' })">Join the Circle — $37/month →</a>
     </div>
 
     <div class="section">
@@ -427,7 +428,7 @@
         <div class="offer-item"><div class="offer-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="offer-text">Simple access from phone, tablet or computer</div></div>
       </div>
       <p class="no-lock">No contract. No lock-in. Cancel anytime.</p>
-      <a href="https://thrivalliving-coach.mvt.so/buy/21877" class="btn-primary" style="font-size:1rem;padding:18px 36px;">Join the Founding Circle — $37/month</a>
+      <a href="https://thrivalliving-coach.mvt.so/buy/21877" class="btn-primary" style="font-size:1rem;padding:18px 36px;" onclick="trackThrivalEvent('circle_join_click', { placement: 'final_offer' })">Join the Founding Circle — $37/month</a>
       <p class="offer-foot-note">Start where you are.</p>
       <p class="imagine-final">Imagine what's possible.</p>
       <p class="tagline-final">Move Better. Feel Stronger. Thrive Longer.</p>
