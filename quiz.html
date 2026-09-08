@@ -16,6 +16,7 @@
 <meta name="twitter:description" content="Answer 8 quick questions and get your personal Body Trust Snapshot.">
 <meta name="twitter:image" content="https://thrivalliving.com.au/thrival-og-image.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<script src="/analytics.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -360,7 +361,7 @@
         <h3>Now you know what your body is telling you.</h3>
         <p>The next step is learning how to listen — and how to respond. The Thrival Living Circle is a community and weekly practice in looking after the body you live in. Through Grounding, Stillness, Opening and Strength, members learn to observe their own movement, build trust, and gradually create more capacity for life.</p>
         <p>Because the real goal isn't becoming better at exercise. It's building a body that keeps saying yes.</p>
-        <a href="/circle" class="btn-cta">Explore The Circle →</a>
+        <a href="/circle" class="btn-cta" onclick="trackThrivalEvent('circle_click', { source: 'quiz_result' })">Explore The Circle →</a>
       </div>
 
      <div class="share-section">
@@ -452,6 +453,7 @@ const RESULT_PROFILES = [
 ];
 
 function startQuiz() {
+  trackThrivalEvent('quiz_start');
   document.getElementById('intro-section').style.display = 'none';
   document.getElementById('quiz-section').style.display = 'block';
   updateProgress();
@@ -473,6 +475,7 @@ function advanceQuestion() {
     updateProgress();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   } else {
+    trackThrivalEvent('quiz_complete');
     document.getElementById('quiz-section').style.display = 'none';
     document.getElementById('email-gate').classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -533,6 +536,12 @@ function showResult(e) {
     document.getElementById('email-gate').classList.remove('active');
     document.getElementById('result-block').classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    trackThrivalEvent('quiz_result_view', {
+      body_trust: profile.trustTitle,
+      strongest_area: CATEGORY_INFO[strongest].label,
+      growth_area: CATEGORY_INFO[growth].label,
+      overall_score: overall
+    });
   } catch (revealErr) {
     console.error('Quiz reveal error:', revealErr);
     return;
@@ -554,6 +563,12 @@ function showResult(e) {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: params.toString()
+    }).then(response => {
+      if (response.ok) {
+        trackThrivalEvent('generate_lead', { lead_source: 'body_trust_quiz' });
+      } else {
+        console.warn('Quiz lead submission returned:', response.status);
+      }
     }).catch(err => console.warn('Quiz lead submission failed:', err));
   } catch (submitErr) {
     console.warn('Quiz lead submission error:', submitErr);
@@ -605,6 +620,7 @@ function buildResult(name, pct, profile, strongest, growth) {
 }
 
 function retakeQuiz() {
+  trackThrivalEvent('quiz_retake');
   Object.keys(answers).forEach(k => delete answers[k]);
   currentQ = 1;
   document.getElementById('result-block').classList.remove('active');
@@ -622,6 +638,8 @@ function retakeQuiz() {
     text: 'I just took this quick Thrival Living quiz. You might find your result interesting too.',
     url: 'https://thrivalliving.com.au/quiz'
   };
+
+  trackThrivalEvent('quiz_share');
 
   if (navigator.share) {
     try {
